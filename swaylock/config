@@ -1,0 +1,7 @@
+screenshots
+clock
+indicator
+show-failed-attempts
+
+indicator-radius=150
+indicator-thickness=25

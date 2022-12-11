@@ -1,0 +1,127 @@
+(defpoll y :interval "0.1s"
+`hyprctl cursorpos | cut -d',' -f2 | cut -d' ' -f2`)
+(defvar h 
+ "1000px")
+
+
+(defwindow snow
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "100px"
+                               :height "1000px"
+                               :anchor "top left")
+           :stacking "fg"
+	(bg))
+	
+	(defwidget bg []
+    (box
+    	:class "bg"
+    (label
+        :limit-width 100
+        :valign "center"
+        :halign "start"
+        :vexpand "true"
+        :text "${h}px")))
+        
+
+(defwindow snow-fall1
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "100%"
+                               :height "100%"
+                               :anchor "top center")
+           :stacking "fg"
+           
+	(snowing))
+	
+	(defwidget snowing []
+    (box
+    	:class "snowing"
+    ))
+
+(defwindow snow-fall2
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "95%"
+                               :height "100%"
+                               :anchor "top center" )
+           :stacking "overlay"
+
+        (snowing2))
+
+        (defwidget snowing2 []
+    (box
+        :class "snowing2"
+    ))
+
+(defwindow ice1
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-1px"
+                               :width "543px"
+                               :height "20px"
+                               :anchor "top right")
+           :stacking "fg"
+
+        (ice))
+
+        (defwidget ice []
+        (box
+        :class "ice"
+        (image
+             :path "/home/paul/.config/eww/ice.png"
+             :image-width 539
+       )))
+
+(defwindow startup-ask
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "300px"
+                               :height "150px"
+                               :anchor "center" )
+           :stacking "overlay"
+
+        (ask))
+
+        (defwidget ask []
+  (box :orientation "v"  :space-evenly "false" :vexpand "true" :hexpand "true" :class "ask"
+    (box :height "20px"
+        
+         (label :text "Activate Snowystuff?" :yalign "0.3" :class "text" :width "100%" :height "20px"))
+     (box :orientation "h" :spacing 50 :halign "center" :space-evenly "false" :vexpand "true" :hexpand "true"
+         (button :class "button" :height "70" :width "70" :halign "start" :valign "center" :vexspand "false" :hexspand "false" :onclick "$HOME/bin/startup.sh" "yay")
+         (button :class "button" :height "70" :width "70" :halign "end" :valign "center" :vexspand "false" :hexspand "false" :onclick "eww close startup-ask" "no"))
+     ))
+
+(defwindow power
+     :monitor 0
+           :geometry (geometry :x "5px"
+                               :y "-36px"
+                               :width "30px"
+                               :height "140px"
+                               :anchor "top right" )
+           :stacking "overlay"
+           
+(power-rev))
+
+(defwidget power-rev []
+(box
+(eventbox :onhoverlost "eww close power" :class "power-bg"
+(box :class "power-bg" :orientation "v" :spacing 5 :halign "center" :space-evenly "false" :vexpand "true" :hexpand "true"
+(button :class "powerbutton" :width "22" :height "28" :tooltip "shutdown" :onclick "dunstify shutdown | systemctl poweroff" "")
+(button :class "powerbutton" :width "22" :height "28" :tooltip "reboot" :onclick "dunstify reboot | systemctl reboot" "凌")
+(button :class "powerbutton" :width "22" :height "28" :tooltip "sleep" :onclick "dunstify sleep | systemctl hybrid-sleep<" "鈴")
+(button :class "powerbutton" :width "22" :height "28" :tooltip "more" :onclick "~/.config/rofi/powermenu/type-6/powermenu.sh | eww close power" "")
+))
+)
+)
+

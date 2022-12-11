@@ -1,0 +1,102 @@
+(defpoll y :interval "0.1s"
+`hyprctl cursorpos | cut -d',' -f2 | cut -d' ' -f2`)
+(defvar h 
+ "1000px")
+
+
+(defwindow snow
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "100px"
+                               :height "1000px"
+                               :anchor "top left")
+           :stacking "fg"
+	(bg))
+	
+	(defwidget bg []
+    (box
+    	:class "bg"
+    (label
+        :limit-width 100
+        :valign "center"
+        :halign "start"
+        :vexpand "true"
+        :text "${h}px")))
+        
+
+(defwindow snow-fall1
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "100%"
+                               :height "100%"
+                               :anchor "top center")
+           :stacking "fg"
+           
+	(snowing))
+	
+	(defwidget snowing []
+    (box
+    	:class "snowing"
+    ))
+
+(defwindow snow-fall2
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "95%"
+                               :height "100%"
+                               :anchor "top center" )
+           :stacking "overlay"
+
+        (snowing2))
+
+        (defwidget snowing2 []
+    (box
+        :class "snowing2"
+    ))
+
+(defwindow ice1
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-1px"
+                               :width "483px"
+                               :height "50px"
+                               :anchor "top right")
+           :stacking "fg"
+
+        (ice))
+
+        (defwidget ice []
+        (box
+        :class "ice"
+        (image
+             :path "/home/paul/.config/eww/ice.png"
+             :image-width 499
+       )))
+
+(defwindow startup-ask
+
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "-0%"
+                               :width "400px"
+                               :height "300px"
+                               :anchor "center" )
+           :stacking "overlay"
+
+        (ask))
+
+        (defwidget ask []
+  (box :orientation "v"  :space-evenly "true" :vexpand "false" :hexpand "false"
+    (box 
+        :class "ask"
+         (label :text "Activate Snowystuff?" :yalign "0.1" :class "text" :width "100%" :height "0px"))
+     (box :orientation "v" :spacing 1 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+         (button :class "button" :height "50" :width "100" :yalign "0.5" :vexspand "false" :hexspand "false" :onclick "~/bin/snowyswitch.sh" :onclick "dunstify""yay"))
+    ))

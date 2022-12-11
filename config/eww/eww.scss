@@ -1,0 +1,84 @@
+*{ all: unset;
+}
+.bg {
+	background-color: rgba(20,20,20,0.6);
+}
+
+.snowing {
+    background-image: url("/home/paul/.config/eww/snowypartbig.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    animation-name: snowfall;
+    animation-duration: 0.71s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0.1;
+    
+}
+
+.snowing2 {
+    background-image: url("/home/paul/.config/eww/snowyfull.png");
+    background-repeat: no-repeat;
+    background-position: 0px 1080px;
+    animation-name: snowfall;
+    animation-duration: 1.11s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0.8;
+
+}
+
+@keyframes snowfall {
+  0% {
+    background-position: 0px -2160px;
+  }
+  100% {
+    background-position: 0px 2160px;
+  }
+}
+
+.ice {
+   background: rgba(200,0,0,0);
+   background-position: 1446px 0px;
+   background-size: 473px 100px;
+   
+}
+
+.ask {
+   background: #5e5c64;
+   border-radius: 30px;
+   border-style: solid;
+   border-width: 2px;
+   border-color: darkred;
+}
+
+.text {
+   font-size: 20px;
+}
+.button {
+   font-family: SpaceMono Nerd Font;
+   border-radius: 25px;
+   border-width: 5px;
+   transition-duration: 0.4s;
+   transition: all .3s;
+background: #5e5c64;
+box-shadow:  8px 8px 15px #262528;
+box-shadow:  -8px -8px 15px #9693a0;
+}
+.button:hover {
+   border-style: solid;
+   border-width: 1px;;
+   border-color: #888787;
+   box-shadow:  8px 8px 15px #4f4d54,
+             -8px -8px 15px #6d6b74;
+}
+.power-bg {
+   background: rgba(8,14,25,0.8);
+   border-radius: 25px;
+}
+.powerbutton {
+   margin-top: 5px;
+   background: rgb(72, 74, 78, 0.9);
+   border-radius: 8px;
+   font-family: SpaceMono Nerd Font;
+}

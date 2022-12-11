@@ -1,0 +1,26 @@
+*{ all: unset;
+}
+.bg {
+	background-color: rgba(20,20,20,0.6);
+}
+
+.snowing {
+    background-image: url("/home/paul/.config/eww/snowyfull.png");
+    background-repeat: no-repeat;
+    background-position: 0px 1080px;
+    animation-name: snowfall;
+    animation-duration: 1.21s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0.8;
+    
+}
+
+@keyframes snowfall {
+  0% {
+    background-position: 0px -2160px;
+  }
+  100% {
+    background-position: 0px 2160px;
+  }
+}

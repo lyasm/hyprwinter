@@ -1,5 +1,17 @@
-# hyprland-dots
+# My hyprwinter
 
+##Stuff I use
+'''
+compositor  : Hyprland       
+terminal    : kitty
+bar         : waybar
+launcher    : rofi
+file manager: thunar
+widgets:      eww
+```## Packages
+        
+        
+          
 
 This is a chaotic
 

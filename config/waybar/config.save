@@ -1,0 +1,106 @@
+{
+    "layer": "overlay",
+    "modules-left": ["custom/menu", "wlr/workspaces", "tray"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["custom/pacman", "network", "pulseaudio", "battery", "backlight", "cpu", "memory", "custom/power", "clock"],
+    "spacing": 10,
+    
+    "custom/menu": {
+    "format": "",
+    "on-click": "",
+},
+
+"custom/pacman": {
+    "format": "{} ",
+    "interval": 3600,                     // every hour
+    "exec": "checkupdates | wc -l",       // # of updates
+    "exec-if": "exit 0",                  // always run; consider advanced run conditions
+    "on-click": "kitty sudo pacman -Syu", // update system
+},
+   
+    "wlr/workspaces": {
+  "format": "{icon}",
+  "on-click": "activate",
+  "format-icons": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "urgent": "",
+//    "active": "",
+    "default": ""
+  },
+  "sort-by-number": true,
+  "active-only": false
+},
+
+"tray": {
+    "icon-size": 21,
+    "spacing": 30
+},
+  
+  "hyprland/window": {
+    "format": " {} ",
+    "separate-outputs": true
+},
+
+    "network": {
+            "interface": "wlan0",
+            "on-click": "exec kitty nmtui",
+            "format": "{ifname}",
+            "format-wifi": "{essid} ({signalStrength}%) ",
+            "format-ethernet": "{ipaddr}/{cidr} ",
+            "format-disconnected": "睊", //An empty format will hide the module.
+            "tooltip-format": "{ifname} via {gwaddr} ",
+            "tooltip-format-wifi": "{essid} (UP:{bandwidthUpBytes}) (DOWN:{bandwidthDownBytes}) ",
+            "tooltip-format-ethernet": "{ifname} ",
+            "tooltip-format-disconnected": "Disconnected 睊",
+            "max-length": 50
+},
+
+	"pulseaudio": {
+	    "format": "{volume}% {icon}",
+	    "format-bluetooth": "{volume}% {icon}",
+	    "format-muted": "婢",
+	    "format-icons": {
+	        "headphone": "",
+	        "phone": "",
+	        "portable": "",
+	        "car": "",
+	        "default": ["", ""]
+	    },
+	    "scroll-step": 1,
+	    "on-click": "pavucontrol",
+	    "ignored-sinks": ["Easy Effects Sink"]
+},
+
+    "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+        "warning": 30,
+        "critical": 15,
+        "full": 95,
+    },
+    "format-discharging": "{capacity}% {icon}",
+    "format-charging": " {time} remaining",
+    "format-full": "Full {icon}",
+    "tooltip-format": "{capacity}% {time}",
+    
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 50
+},
+
+"backlight": {
+   "format": "{percent}% {icon}",
+    "format-icons": ["", ""]
+}
+    
+//    "clock": {
+//        "format-alt": "{:%a, %d. %b  %H:%M}"
+//    },
+    },    
+}
+
